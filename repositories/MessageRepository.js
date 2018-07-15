@@ -7,7 +7,6 @@ class MessageRepository {
     this.model = Message;
   }
   findIds(senderId, callback) {
-    console.log("Getting receivers' ids...");
     var model = this.model;
     var query = model.find(
       {senderId: senderId}, 'receiverId -_id'

@@ -7,7 +7,6 @@ class UserRepository {
     this.model = User;
   }
   getById(ids, callback) {
-    console.log("Getting receivers' data...");
     var model = this.model;
     var query = model.find(
       {id: {$in: ids}},
