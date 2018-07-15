@@ -1,20 +1,18 @@
-/* const UserRepository = require("../repositories/UserRepository");
+const UserRepository = require("../repositories/UserRepository");
+const MessageRepository = require("../repositories/MessageRepository");
 
-function getReceivers(ids, callback) {
-  UserRepository.getReceivers(ids, (err, data) => {
+module.exports = {
+  getReceiversIds: (senderId, callback) => {
+    console.log("Services1...");
+    MessageRepository.findIds(senderId, (err, data) => {
       callback(err, data);
-  });
-}; */
-const User = require('../models/user.js');
+    });
+  },
 
-function getReceivers(receivers) {
-  User.find({id:{$in:[receivers]}}, 'name', (err, users) => {
-    if (!err) {
-    return users;
-  } else {
-    res.status(400);
-    res.end();
+  getReceivers: (ids, callback) => {
+    console.log("Services2...");
+    UserRepository.getById(ids, (err, data) => {
+      callback(err, data);
+    });
   }
-  });};
-
-module.exports = getReceivers;
+};
