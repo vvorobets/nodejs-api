@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const userService = require("../../services/user");
 
-console.log(userService);
-
 const Message = require('../../models/message.js');
 const User = require('../../models/user.js');
 
