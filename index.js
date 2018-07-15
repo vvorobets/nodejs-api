@@ -25,6 +25,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const routes = require("./routes/api/routes")(app);
-// app.use(router);
 
 const server = app.listen(1428);

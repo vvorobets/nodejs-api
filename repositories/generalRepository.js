@@ -1,12 +1,12 @@
 function Repository() {}
 
-Repository.prototype.getById = getById;
+Repository.prototype.getReceivers = getReceivers;
 
-function getById(id, callback) {
+function getReceivers(ids, callback) {
   var model = this.model;
-  var query = model.findOne({
-    _id: id
-  });
+  var query = model.find(
+    {id:{$in:[ids]}}
+  );
   query.exec(callback);
 }
 
