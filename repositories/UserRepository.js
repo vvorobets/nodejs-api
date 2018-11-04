@@ -1,21 +1,37 @@
 // const connection = require("../db/dbconnect");
-const Repository = require("./generalRepository");
 const User = require("../models/user");
 
 class UserRepository {
   constructor() {
     this.model = User;
   }
-  getById(ids, callback) {
-    var model = this.model;
-    var query = model.find(
-      {id: {$in: ids}},
+  create(newUser, callback) {
+    this.model.create(newUser, callback);
+  }
+  getAll(callback) {
+    let query = this.model.find();
+    query.exec(callback);
+  }
+  getOne(id, callback) {
+    let query = this.model.findById(id);
+    query.exec(callback);
+  }
+  update(id, newUser, callback) {
+    let query = this.model.findByIdAndUpdate(id, newUser);
+    query.exec(callback);
+  }
+  delete(id, callback) {
+    let query = this.model.findByIdAndRemove(id);
+    query.exec(callback);
+  }
+  getNamesByIdArray(ids, callback) {
+    console.log("Hello from fishing names! ", ids);
+    let query = this.model.find(
+      {_id: {$in: ids}},
       'name -_id'
     );
   query.exec(callback);
   }
 }
-
-UserRepository.prototype = new Repository();
 
 module.exports = new UserRepository();

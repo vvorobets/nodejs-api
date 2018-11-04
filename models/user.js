@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost:27017/nodejs-api');
 
 const userSchema = mongoose.Schema({
-  id: { type: Number, required: true, unique: true },
+  id: String,
   name: String,
   email: String,
   age: Number
